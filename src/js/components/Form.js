@@ -14,7 +14,7 @@ class PConnectedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      patient: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,20 +26,20 @@ class PConnectedForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { name } = this.state;
-    this.props.addPatient({ name });
-    this.setState({ name: "" });
+    const { patient } = this.state;
+    this.props.addPatient({ patient });
+    this.setState({ patient: "" });
   }
   render() {
-    const { name } = this.state;
+    const { patient } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="title">Name</label>
+          <label htmlFor="title">Patient</label>
           <input
             type="text"
-            id="name"
-            value={name}
+            id="patient"
+            value={patient}
             onChange={this.handleChange}
           />
         </div>
@@ -53,7 +53,7 @@ class TConnectedForm extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        name: ""
+        therapist: ""
       };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,20 +65,20 @@ class TConnectedForm extends Component {
   
     handleSubmit(event) {
       event.preventDefault();
-      const { name } = this.state;
-      this.props.addTherapist({ name });
-      this.setState({ name: "" });
+      const { therapist } = this.state;
+      this.props.addTherapist({ therapist });
+      this.setState({ therapist: "" });
     }
     render() {
-      const { name } = this.state;
+      const { therapist } = this.state;
       return (
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="title">Name</label>
+            <label htmlFor="title">Therapist</label>
             <input
               type="text"
-              id="name"
-              value={name}
+              id="therapist"
+              value={therapist}
               onChange={this.handleChange}
             />
           </div>

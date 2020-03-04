@@ -3,6 +3,8 @@ import {PList} from "./List";
 import {PForm} from "./Form";
 import {TList} from "./List";
 import {TForm} from "./Form";
+import Scheduler from "./Scheduler"
+import {SList} from "./List";
 
 const App = () => (
   <>
@@ -21,6 +23,14 @@ const App = () => (
     <div>
       <h2>Add a new therapist</h2>
       <TForm />
+    </div>
+    <div>
+      <h2>Schedule</h2>
+      <SList />
+    </div>
+    <div>
+        <h2>Add a new schedule</h2>
+        <Scheduler />
     </div>
   </>
 );
