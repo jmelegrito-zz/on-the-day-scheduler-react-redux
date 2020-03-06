@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addSchedule } from "../actions/index";
+import { resetSchedule } from "../actions/index";
 import POptions from "./patientList";
 import TOptions from "./therapistList";
 import COptions from "./hourList";
@@ -9,6 +10,7 @@ import COptions from "./hourList";
 function mapDispatchToProps(dispatch) {
   return {
     addSchedule: schedule => dispatch(addSchedule(schedule)),
+    resetSchedule: () => dispatch(resetSchedule())
   };
 }
 
@@ -46,9 +48,13 @@ class SchedulerForm extends Component {
     this.props.addSchedule({ hour, patient, therapist });
     // this.setState({ hour: "", patient: "", therapist: "" });
   }
+  handleReset = () => {
+    this.props.resetSchedule()
+  }
   
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="title">Patient</label>
@@ -65,6 +71,8 @@ class SchedulerForm extends Component {
         </div>
         <button type="submit">SAVE</button>
       </form>
+      <button onClick={this.handleReset}>RESET</button>
+      </div>
     );
   }
 }

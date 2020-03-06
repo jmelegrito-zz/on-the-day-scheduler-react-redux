@@ -5,7 +5,8 @@ import {TList} from "./List";
 import {TForm} from "./Form";
 import Scheduler from "./Scheduler"
 import {SList} from "./List";
-import {TView} from "./List"
+import {TView} from "./List";
+import {PView} from "./List";
 
 const App = () => (
   <>
@@ -18,7 +19,7 @@ const App = () => (
       <PForm />
     </div>
     <div>
-      <h2>Therapist</h2>
+      <h2>Therapists</h2>
       <TList />
     </div>
     <div>
@@ -36,6 +37,10 @@ const App = () => (
     <div>
         <h2>Therapist View</h2>
         <TView />
+    </div>
+    <div>
+        <h2>Patient View</h2>
+        <PView />
     </div>
   </>
 );

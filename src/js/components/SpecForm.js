@@ -1,12 +1,12 @@
 import React from "react";
 import store from "../store/index";
 
-class TOptions extends React.Component {
+class SOptions extends React.Component {
 
   state = this.getCurrentStateFromStore();
   getCurrentStateFromStore() {
     return {
-      therapists: store.getState().therapists
+      specialization: store.getState().specialization
     };
   }
 
@@ -27,23 +27,22 @@ class TOptions extends React.Component {
 
 
   handleChange = (event) => {
-    const ther = event.target.value
-    this.props.sendData(ther)
+    const spec = event.target.value
+    this.props.sendData(spec)
   }
 
   render() {
     return (
       <select
-        defaultValue="Select a Therapist"
+        defaultValue="Select a Specialization"
         onChange={this.handleChange}
-        id="therapist"
+        id="special"
       >
-        <option disabled>Select a Therapist</option>
-        {this.state.therapists.map((el, i) => {
-          let person = el.therapist + " - " + el.specialization
+        <option disabled>Select a Specialization</option>
+        {this.state.specialization.map((el, i) => {
           return (
-            <option key={i} value={person}>
-              {el.therapist} - {el.specialization}
+            <option key={i} value={el.type}>
+              {el.type}
             </option>
           );
         })}
@@ -52,4 +51,4 @@ class TOptions extends React.Component {
   }
 }
 
-export default TOptions;
+export default SOptions;
