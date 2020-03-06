@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addSchedule } from "../actions/index";
 import POptions from "./patientList";
 import TOptions from "./therapistList";
+import COptions from "./hourList";
 
 
 function mapDispatchToProps(dispatch) {
@@ -15,7 +16,7 @@ class SchedulerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      hour: "",
       therapist: "",
       patient: ""
     };
@@ -31,20 +32,22 @@ class SchedulerForm extends Component {
     this.setState({ patient: data })
   }
 
+  handleTime = (data) => {
+    this.setState({ hour: data })
+  }
+
   handleTherapist = (data) => {
     this.setState({ therapist: data })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    event.persist();
-    const { name, patient, therapist } = this.state;
-    this.props.addSchedule({ name, patient, therapist });
-    this.setState({ name: "", patient: "", therapist: "" });
+    const { hour, patient, therapist } = this.state;
+    this.props.addSchedule({ hour, patient, therapist });
+    // this.setState({ hour: "", patient: "", therapist: "" });
   }
   
   render() {
-    const { name } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -57,13 +60,8 @@ class SchedulerForm extends Component {
           <TOptions sendData = {this.handleTherapist}/>
         </div>
         <div>
-          <label htmlFor="title">Hours</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={this.handleChange}
-          />
+          <label htmlFor="title">Timeslot</label>
+          <COptions sendData = {this.handleTime} />
         </div>
         <button type="submit">SAVE</button>
       </form>

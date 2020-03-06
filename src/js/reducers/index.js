@@ -3,7 +3,22 @@ import { ADD_PATIENT, ADD_SCHEDULER, ADD_THERAPIST } from "../constants/action-t
 const initialState = {
   patients: [],
   therapists: [],
-  schedule: []
+  schedule: [],
+  hours: [
+      {hour: '6AM - 7AM'},
+      {hour: '7AM - 8AM'},
+      {hour: '8AM - 9AM'},
+      {hour: '9AM - 10AM'},
+      {hour: '10AM - 11AM'},
+      {hour: '11AM - 12NN'},
+      {hour: '12NN - 1PM'},
+      {hour: '1PM - 2PM'},
+      {hour: '2PM - 3PM'},
+      {hour: '3PM - 4PM'},
+      {hour: '4PM - 5PM'},
+      {hour: '5PM - 6PM'},
+      {hour: '6PM - 7PM'}
+  ]
 };
 
 function rootReducer(state = initialState, action) {

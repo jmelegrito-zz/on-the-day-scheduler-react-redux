@@ -28,11 +28,50 @@ const TConnectedList = ({ therapists }) => (
 const ScheduleList = ({ schedule }) => (
   <ul>
     {schedule.map((el, i) => {
-      return <li key={i}>{el.name} + {el.patient} + {el.therapist}</li>;
+      return (
+        <li key={i}>
+          {el.hour} + {el.patient} + {el.therapist}
+        </li>
+      );
     })}
   </ul>
 );
 
+const TherapistView = ({ therapists, schedule }) => {
+  let theraList = [...therapists];
+  let schedList = [...schedule];
+  let assignment = [];
+
+  theraList.forEach(el => {
+    let assigned = schedList.filter(function(x) {
+      if (x["therapist"] === el["therapist"]) {
+        return true;
+      }
+      return false;
+    });
+    assignment.push(assigned);
+  });
+  return (
+    <div>
+      {assignment.map((el, i) => {
+        return (
+          <div key={i}>
+ 
+            {el.map((ex, i) => {
+              return (
+                <div key={i}>
+                  {ex.patient} + {ex.hour}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 export const PList = connect(mapStateToProps)(PConnectedList);
 export const TList = connect(mapStateToProps)(TConnectedList);
 export const SList = connect(mapStateToProps)(ScheduleList);
+export const TView = connect(mapStateToProps)(TherapistView);

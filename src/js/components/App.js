@@ -5,6 +5,7 @@ import {TList} from "./List";
 import {TForm} from "./Form";
 import Scheduler from "./Scheduler"
 import {SList} from "./List";
+import {TView} from "./List"
 
 const App = () => (
   <>
@@ -31,6 +32,10 @@ const App = () => (
     <div>
         <h2>Add a new schedule</h2>
         <Scheduler />
+    </div>
+    <div>
+        <h2>Therapist View</h2>
+        <TView />
     </div>
   </>
 );

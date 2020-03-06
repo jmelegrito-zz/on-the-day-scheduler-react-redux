@@ -1,12 +1,12 @@
 import React from "react";
 import store from "../store/index";
 
-class POptions extends React.Component {
+class COptions extends React.Component {
 
   state = this.getCurrentStateFromStore();
   getCurrentStateFromStore() {
     return {
-      patients: store.getState().patients
+      hours: store.getState().hours
     };
   }
 
@@ -27,22 +27,24 @@ class POptions extends React.Component {
 
 
   handleChange = (event) => {
-    const pat = event.target.value
-    this.props.sendData(pat)
+    const time = event.target.value
+    this.props.sendData(time)
   }
+
+
 
   render() {
     return (
       <select
-        defaultValue="Select a Patient"
+        defaultValue="Select a Timeslot"
         onChange={this.handleChange}
-        id="patient"
+        id="hour"
       >
-        <option disabled>Select a Patient</option>
-        {this.state.patients.map((el, i) => {
+        <option disabled>Select a Timeslot</option>
+        {this.state.hours.map((el, i) => {
           return (
-            <option key={i} value={el.patient}>
-              {el.patient}
+            <option key={i} value={el.hour}>
+              {el.hour}
             </option>
           );
         })}
@@ -51,4 +53,4 @@ class POptions extends React.Component {
   }
 }
 
-export default POptions;
+export default COptions;
