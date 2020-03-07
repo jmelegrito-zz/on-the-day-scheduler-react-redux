@@ -41,19 +41,20 @@ class PConnectedForm extends Component {
     const { patient } = this.state;
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="form-group cardList formRow">
         <div>
-          <label htmlFor="title">Patient</label>
           <input
             type="text"
             id="patient"
             value={patient}
             onChange={this.handleChange}
-          />
+            className="form-control formLength"
+            placeholder="Enter Patient Name"
+            required/>
         </div>
-        <button type="submit">SAVE</button>
+        <button type="submit" className="btn btn-primary">SAVE</button>
       </form>
-      <button onClick={this.handleReset}>RESET</button>
+      <button onClick={this.handleReset} className="btn btn-danger">CLEAR PATIENT LIST</button>
       </div>
     );
   }
@@ -86,23 +87,29 @@ class TConnectedForm extends Component {
     render() {
       const { therapist } = this.state;
       return (
-        <form onSubmit={this.handleSubmit}>
+        <div>
+        <form onSubmit={this.handleSubmit} className="form-group cardList">
+          <div className="formRow">
           <div>
-            <label htmlFor="title">Therapist</label>
             <input
               type="text"
               id="therapist"
               value={therapist}
               onChange={this.handleChange}
+              className="form-control formLength"
+              placeholder="Enter Therapist Name"
+              required
             />
           </div>
+          <button type="submit" className="btn btn-primary">SAVE</button>
+          </div>
           <div>
-          <label htmlFor="title">Specialization</label>
               <SOptions sendData = {this.handleSpec}/>
 
         </div>
-          <button type="submit">SAVE</button>
+          
         </form>
+        </div>
       );
     }
   }

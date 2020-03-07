@@ -37,8 +37,10 @@ class POptions extends React.Component {
         defaultValue="Select a Patient"
         onChange={this.handleChange}
         id="patient"
+        className="form-control cardList"
+        required
       >
-        <option disabled>Select a Patient</option>
+        <option value="" hidden>Select a Patient</option>
         {this.state.patients.map((el, i) => {
           return (
             <option key={i} value={el.patient}>

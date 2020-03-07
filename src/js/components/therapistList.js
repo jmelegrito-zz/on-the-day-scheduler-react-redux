@@ -37,8 +37,10 @@ class TOptions extends React.Component {
         defaultValue="Select a Therapist"
         onChange={this.handleChange}
         id="therapist"
+        className="form-control cardList"
+        required
       >
-        <option disabled>Select a Therapist</option>
+        <option value="" hidden>Select a Therapist</option>
         {this.state.therapists.map((el, i) => {
           let person = el.therapist + " - " + el.specialization
           return (

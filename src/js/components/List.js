@@ -10,31 +10,43 @@ const mapStateToProps = state => {
 };
 
 const PConnectedList = ({ patients }) => (
-  <ul>
-    {patients.map((el, i) => {
-      return <li key={i}>{el.patient}</li>;
-    })}
-  </ul>
+  <div className="card cardList">
+    <div className="card-header">
+      Patients
+    </div>
+    <ul className="list-group list-group-flush">
+      {patients.map((el, i) => {
+        return <li key={i} className="list-group-item">{el.patient}</li>;
+      })}
+    </ul>
+  </div>
 );
 
 const TConnectedList = ({ therapists }) => (
-  <ul>
-    {therapists.map((el, i) => {
-      return <li key={i}>{el.therapist} + {el.specialization}</li>;
-    })}
-  </ul>
+  <div className="card cardList">
+    <div className="card-header">
+      Therapists
+    </div>
+    <ul className="list-group list-group-flush">
+      {therapists.map((el, i) => {
+        return <li key={i} className="list-group-item">{el.therapist} + {el.specialization}</li>;
+      })}
+    </ul>
+  </div>
 );
 
 const ScheduleList = ({ schedule }) => (
-  <ul>
-    {schedule.map((el, i) => {
-      return (
-        <li key={i}>
-          {el.hour} {el.hour.value} + {el.patient} + {el.therapist}
-        </li>
-      );
-    })}
-  </ul>
+  <div className="card">
+    <ul className="list-group list-group-flush">
+      {schedule.map((el, i) => {
+        return (
+          <li key={i} className="list-group-item">
+            {el.hour} {el.hour.value} + {el.patient} + {el.therapist}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
 );
 
 const TherapistView = ({ therapists, schedule }) => {
@@ -43,40 +55,47 @@ const TherapistView = ({ therapists, schedule }) => {
   let assignment = [];
 
   let updatedList = theraList.map(el => {
-   return el.therapist + " - " + el.specialization
+    return el.therapist + " - " + el.specialization
   })
 
   updatedList.forEach(el => {
-    let assigned = schedList.filter(function(x) {
+    let assigned = schedList.filter(function (x) {
       if (x["therapist"] === el) {
         return true;
       }
       return false;
     });
-    assignment.push({'therapist' : el, 'sched' : assigned});
+    assignment.push({ 'therapist': el, 'sched': assigned });
   });
   return (
-    <div>
+    <div className="cardRow">
       {assignment.map((el, i) => {
-         el.sched.sort((a,b) => {
-          if(a.hour < b.hour){
+        el.sched.sort((a, b) => {
+          if (a.hour < b.hour) {
             return -1;
           }
-          if (a.hour > b.hour){
+          if (a.hour > b.hour) {
             return 1;
           }
           return 0;
         })
         return (
           <div key={i}>
-            <h3>{el.therapist}</h3>
-            {el.sched.map((ex, i) => {
-              return (
-                <div key={i}>
-                  {ex.patient} + {ex.hour}
-                </div>
-              );
-            })}
+            <div className="card cardList">
+              <div className="card-header">
+                {el.therapist}
+              </div>
+              <ul className="list-group list-group-flush">
+
+                {el.sched.map((ex, i) => {
+                  return (
+                    <li key={i} className="list-group-item">
+                      {ex.patient} + {ex.hour}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         );
       })}
@@ -90,27 +109,33 @@ const PatientView = ({ patients, schedule }) => {
   let assignment = [];
 
   patList.forEach(el => {
-    let assigned = scheduleList.filter(function(x) {
+    let assigned = scheduleList.filter(function (x) {
       if (x["patient"] === el["patient"]) {
         return true;
       }
       return false;
     });
-    assignment.push({'patient' : el["patient"], 'sched' : assigned});
+    assignment.push({ 'patient': el["patient"], 'sched': assigned });
   });
   return (
-    <div>
+    <div className="">
       {assignment.map((el, i) => {
         return (
-          <div key={i}>
-            <h3>{el.patient}</h3>
-            {el.sched.map((ex, i) => {
-              return (
-                <div key={i}>
-                  {ex.therapist} + {ex.hour}
-                </div>
-              );
-            })}
+          <div key={i} className="card-deck">
+            <div className="card cardList">
+              <div className="card-header">
+                {el.patient}
+              </div>
+              <ul className="list-group list-group-flush">
+                {el.sched.map((ex, i) => {
+                  return (
+                    <li key={i} className="list-group-item">
+                      {ex.therapist} + {ex.hour}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         );
       })}

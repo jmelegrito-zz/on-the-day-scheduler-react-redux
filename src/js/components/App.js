@@ -7,33 +7,29 @@ import Scheduler from "./Scheduler"
 import {SList} from "./List";
 import {TView} from "./List";
 import {PView} from "./List";
+import '../../App.css';
 
 const App = () => (
-  <>
+  <div className="container">
+    <div className="row">
+      <div className="col">
     <div>
-      <h2>Patients</h2>
       <PList />
     </div>
     <div>
-      <h2>Add a new patient</h2>
       <PForm />
     </div>
-    <div>
-      <h2>Therapists</h2>
+    <div className="space">
       <TList />
     </div>
     <div>
-      <h2>Add a new therapist</h2>
       <TForm />
     </div>
     <div>
-      <h2>Schedule</h2>
-      <SList />
-    </div>
-    <div>
-        <h2>Add a new schedule</h2>
         <Scheduler />
     </div>
+    </div>
+    <div className="col">
     <div>
         <h2>Therapist View</h2>
         <TView />
@@ -42,7 +38,13 @@ const App = () => (
         <h2>Patient View</h2>
         <PView />
     </div>
-  </>
+    <div>
+    <h2>Raw Schedule View</h2>
+      <SList />
+    </div>
+    </div>
+    </div>
+  </div>
 );
 
 export default App;

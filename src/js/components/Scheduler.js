@@ -55,23 +55,26 @@ class SchedulerForm extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <div className="card cardList">
+        <div className="card-header">
+      Set Schedule
+    </div>
+    </div>
+      <form onSubmit={this.handleSubmit} className="form-group cardList">
         <div>
-          <label htmlFor="title">Patient</label>
               <POptions sendData = {this.handlePatient}/>
 
         </div>
         <div>
-          <label htmlFor="title">Therapist</label>
           <TOptions sendData = {this.handleTherapist}/>
         </div>
-        <div>
-          <label htmlFor="title">Timeslot</label>
+        <div className="formRow">
           <COptions sendData = {this.handleTime} />
+          <button type="submit" className="btn btn-primary">SAVE</button>
         </div>
-        <button type="submit">SAVE</button>
+        
       </form>
-      <button onClick={this.handleReset}>RESET</button>
+      <button onClick={this.handleReset} className="btn btn-danger">CLEAR SCHEDULE LIST</button>
       </div>
     );
   }

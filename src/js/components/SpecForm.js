@@ -37,8 +37,10 @@ class SOptions extends React.Component {
         defaultValue="Select a Specialization"
         onChange={this.handleChange}
         id="special"
+        className="form-control cardList"
+        required
       >
-        <option disabled>Select a Specialization</option>
+        <option value="" hidden>Select a Specialization</option>
         {this.state.specialization.map((el, i) => {
           return (
             <option key={i} value={el.type}>

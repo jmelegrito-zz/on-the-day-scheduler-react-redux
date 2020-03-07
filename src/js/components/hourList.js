@@ -39,8 +39,10 @@ class COptions extends React.Component {
         defaultValue="Select a Timeslot"
         onChange={this.handleChange}
         id="hour"
+        className="form-control formLength"
+        required
       >
-        <option disabled>Select a Timeslot</option>
+        <option value="" hidden>Select a Timeslot</option>
         {this.state.hours.map((el, i) => {
           return (
             <option key={i} value={el.hour}>
