@@ -70,11 +70,11 @@ class SchedulerForm extends Component {
         </div>
         <div className="formRow">
           <COptions sendData = {this.handleTime} />
-          <button type="submit" className="btn btn-primary">SAVE</button>
+          <button type="submit" className="btn btn-custom">SAVE</button>
         </div>
         
       </form>
-      <button onClick={this.handleReset} className="btn btn-danger">CLEAR SCHEDULE LIST</button>
+      <button onClick={this.handleReset} className="btn btn-custom2">CLEAR SCHEDULE LIST</button>
       </div>
     );
   }

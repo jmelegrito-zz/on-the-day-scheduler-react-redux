@@ -3,6 +3,7 @@ import { ADD_THERAPIST } from "../constants/action-types";
 import { ADD_SCHEDULER } from "../constants/action-types";
 import { RESET_SCHEDULER } from "../constants/action-types";
 import { RESET_PATIENT } from "../constants/action-types";
+import { RESET_THERAPIST } from "../constants/action-types";
 
 export function addPatient(info) {
   return { type: ADD_PATIENT, info }
@@ -22,4 +23,8 @@ export function resetSchedule() {
 
 export function resetPatient() {
   return { type: RESET_PATIENT }
+};
+
+export function resetTherapist() {
+  return { type: RESET_THERAPIST }
 };

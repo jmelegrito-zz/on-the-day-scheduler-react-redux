@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+
 body{
   margin-top: 10px;
+  background-color: #f9f7f0;
+  font-family: 'Sen', sans-serif;
 }
 .cardList{
   width: 18rem;
 }
 .formLength{
-  width: 14.25rem;
+  width: 13.90rem;
 }
 
 .cardRow{
@@ -20,4 +24,36 @@ justify-content: flex-start;
 
 .space{
   margin-top: 10px;
+}
+.pageFormat{
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+.leftPane{
+  margin-left: 10px;
+}
+.rightPane {
+  margin-right: 10px;
+}
+.btn-custom {
+  background-color: #095d67;
+  color: #FFFFFF;
+}
+.viewStyle {
+  background-color: #f9f7f0;
+}
+.card-header {
+  background-color: #095d67;
+  color: #FFFFFF;
+}
+.btn-custom2 {
+  background-color: #d19f2a;
+  color: #FFFFFF;
+}
+.navbar {
+  background-color: #095d67;
+  color: #FFFFFF;
+}
+.jumbotron {
+  background-color: #FFFFFF;
 }

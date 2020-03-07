@@ -1,4 +1,4 @@
-import { ADD_PATIENT, ADD_SCHEDULER, ADD_THERAPIST, RESET_PATIENT, RESET_SCHEDULER } from "../constants/action-types";
+import { ADD_PATIENT, ADD_SCHEDULER, ADD_THERAPIST, RESET_PATIENT, RESET_SCHEDULER, RESET_THERAPIST } from "../constants/action-types";
 
 const initialState = {
   patients: [],
@@ -51,6 +51,11 @@ function rootReducer(state = initialState, action) {
   else if (action.type === RESET_SCHEDULER){
     return Object.assign({}, state, {
       schedule: [...initialState.schedule] 
+    });
+  }
+  else if (action.type === RESET_THERAPIST){
+    return Object.assign({}, state, {
+      therapists: [...initialState.therapists] 
     });
   }
   return state;

@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import { addPatient } from "../actions/index";
 import { addTherapist } from "../actions/index";
 import { resetPatient } from "../actions/index";
+import { resetTherapist } from "../actions/index";
 import SOptions from "./SpecForm";
 
 function mapDispatchToProps(dispatch) {
   return {
     addPatient: patient => dispatch(addPatient(patient)),
     addTherapist: therapist => dispatch(addTherapist(therapist)),
-    resetPatient: () => dispatch(resetPatient())
+    resetPatient: () => dispatch(resetPatient()),
+    resetTherapist: () => dispatch(resetTherapist())
   };
 }
 
@@ -52,9 +54,9 @@ class PConnectedForm extends Component {
             placeholder="Enter Patient Name"
             required/>
         </div>
-        <button type="submit" className="btn btn-primary">SAVE</button>
+        <button type="submit" className="btn btn-custom">SAVE</button>
       </form>
-      <button onClick={this.handleReset} className="btn btn-danger">CLEAR PATIENT LIST</button>
+      <button onClick={this.handleReset} className="btn btn-custom2">CLEAR PATIENT LIST</button>
       </div>
     );
   }
@@ -84,31 +86,37 @@ class TConnectedForm extends Component {
       this.props.addTherapist({ therapist, specialization });
       // this.setState({ therapist: "" });
     }
+
+    handleReset = () => {
+      this.props.resetTherapist()
+    }
+
     render() {
       const { therapist } = this.state;
       return (
         <div>
         <form onSubmit={this.handleSubmit} className="form-group cardList">
-          <div className="formRow">
+          <div>
           <div>
             <input
               type="text"
               id="therapist"
               value={therapist}
               onChange={this.handleChange}
-              className="form-control formLength"
+              className="form-control"
               placeholder="Enter Therapist Name"
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">SAVE</button>
+          
           </div>
-          <div>
+          <div className="formRow">
               <SOptions sendData = {this.handleSpec}/>
-
+              <button type="submit" className="btn btn-custom">SAVE</button>
         </div>
           
         </form>
+        <button onClick={this.handleReset} className="btn btn-custom2">CLEAR THERAPIST LIST</button>
         </div>
       );
     }

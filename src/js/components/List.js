@@ -29,23 +29,25 @@ const TConnectedList = ({ therapists }) => (
     </div>
     <ul className="list-group list-group-flush">
       {therapists.map((el, i) => {
-        return <li key={i} className="list-group-item">{el.therapist} + {el.specialization}</li>;
+        return <li key={i} className="list-group-item">{el.therapist} - {el.specialization}</li>;
       })}
     </ul>
   </div>
 );
 
 const ScheduleList = ({ schedule }) => (
+  <div className="container">
   <div className="card">
     <ul className="list-group list-group-flush">
       {schedule.map((el, i) => {
         return (
           <li key={i} className="list-group-item">
-            {el.hour} {el.hour.value} + {el.patient} + {el.therapist}
+            {el.therapist} with {el.patient} at {el.hour}
           </li>
         );
       })}
     </ul>
+  </div>
   </div>
 );
 
@@ -68,7 +70,8 @@ const TherapistView = ({ therapists, schedule }) => {
     assignment.push({ 'therapist': el, 'sched': assigned });
   });
   return (
-    <div className="cardRow">
+    <div className="container">
+    <div className="row row-cols-4">
       {assignment.map((el, i) => {
         el.sched.sort((a, b) => {
           if (a.hour < b.hour) {
@@ -80,7 +83,7 @@ const TherapistView = ({ therapists, schedule }) => {
           return 0;
         })
         return (
-          <div key={i}>
+          <div key={i} className="col mb-4">
             <div className="card cardList">
               <div className="card-header">
                 {el.therapist}
@@ -90,15 +93,17 @@ const TherapistView = ({ therapists, schedule }) => {
                 {el.sched.map((ex, i) => {
                   return (
                     <li key={i} className="list-group-item">
-                      {ex.patient} + {ex.hour}
+                      {ex.patient} at {ex.hour}
                     </li>
                   );
                 })}
               </ul>
             </div>
           </div>
+          
         );
       })}
+    </div>
     </div>
   );
 };
@@ -118,10 +123,20 @@ const PatientView = ({ patients, schedule }) => {
     assignment.push({ 'patient': el["patient"], 'sched': assigned });
   });
   return (
-    <div className="">
+    <div className="container">
+    <div className="row row-cols-4">
       {assignment.map((el, i) => {
+        el.sched.sort((a, b) => {
+          if (a.hour < b.hour) {
+            return -1;
+          }
+          if (a.hour > b.hour) {
+            return 1;
+          }
+          return 0;
+        })
         return (
-          <div key={i} className="card-deck">
+          <div key={i} className="col mb-4">
             <div className="card cardList">
               <div className="card-header">
                 {el.patient}
@@ -130,7 +145,7 @@ const PatientView = ({ patients, schedule }) => {
                 {el.sched.map((ex, i) => {
                   return (
                     <li key={i} className="list-group-item">
-                      {ex.therapist} + {ex.hour}
+                      {ex.therapist} at {ex.hour}
                     </li>
                   );
                 })}
@@ -139,6 +154,7 @@ const PatientView = ({ patients, schedule }) => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };
